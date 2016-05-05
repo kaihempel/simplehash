@@ -1,0 +1,33 @@
+{
+    "name": "kaihempel/simplehash",
+    "description": "Basic hash library",
+    "type": "library",
+    "keywords": [
+        "hash calculation"
+    ],
+    "homepage": "https://dev.kuweh.de/",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Kai Hempel",
+            "email": "dev@kuweh.de",
+            "role": "lead"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/kaihempel/simplehash/issues"
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SimpleHash\\": "src/"
+        }
+    },
+    "require-dev": {
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "4.6.*"
+    }
+}

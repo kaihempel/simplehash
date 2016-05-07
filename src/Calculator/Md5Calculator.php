@@ -15,8 +15,8 @@ class Md5Calculator implements HashCalculatorInterface
     /**
      * Returns the MD5 hash
      *
-     * @param type $data
-     * @return type
+     * @param string $data
+     * @return string
      */
     public function getHash($data)
     {

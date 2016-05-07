@@ -1,4 +1,4 @@
-<?php namespace SimpleHash\HashCalculator;
+<?php namespace SimpleHash\Calculator;
 
 use PHPUnit_Framework_TestCase;
 
@@ -19,8 +19,8 @@ class Sha1CalculatorTest extends PHPUnit_Framework_TestCase
     {
         $sha1 = new Sha1Calculator();
 
-        $this->assertInstanceOf('\SimpleHash\HashCalculator\Sha1Calculator', $sha1);
-        $this->assertInstanceOf('\SimpleHash\HashCalculator\HashCalculatorInterface', $sha1);
+        $this->assertInstanceOf('\SimpleHash\Calculator\Sha1Calculator', $sha1);
+        $this->assertInstanceOf('\SimpleHash\Calculator\HashCalculatorInterface', $sha1);
     }
 
     public function testGetHash()

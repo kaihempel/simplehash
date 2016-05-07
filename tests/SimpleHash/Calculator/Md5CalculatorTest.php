@@ -1,4 +1,4 @@
-<?php namespace SimpleHash\HashCalculator;
+<?php namespace SimpleHash\Calculator;
 
 use PHPUnit_Framework_TestCase;
 
@@ -19,8 +19,8 @@ class Md5CalculatorTest extends PHPUnit_Framework_TestCase
     {
         $md5 = new Md5Calculator();
 
-        $this->assertInstanceOf('\SimpleHash\HashCalculator\Md5Calculator', $md5);
-        $this->assertInstanceOf('\SimpleHash\HashCalculator\HashCalculatorInterface', $md5);
+        $this->assertInstanceOf('\SimpleHash\Calculator\Md5Calculator', $md5);
+        $this->assertInstanceOf('\SimpleHash\Calculator\HashCalculatorInterface', $md5);
     }
 
     public function testGetHash()

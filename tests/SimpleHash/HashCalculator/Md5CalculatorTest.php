@@ -1,7 +1,6 @@
 <?php namespace SimpleHash\HashCalculator;
 
 use PHPUnit_Framework_TestCase;
-use Mockery as m;
 
 /**
  * MD5 Hash calculator class
@@ -14,7 +13,7 @@ use Mockery as m;
  * @link       https://www.kuweh.de/
  * @since      Class available since Release 1.0.0
  */
-class Md5Test extends PHPUnit_Framework_TestCase
+class Md5CalculatorTest extends PHPUnit_Framework_TestCase
 {
     public function testNewMd5Calculator()
     {

@@ -1,4 +1,4 @@
-<?php namespace SimpleHash\HashCalculator;
+<?php namespace SimpleHash\Calculator;
 
 /**
  * Hash calculator interface
@@ -14,8 +14,10 @@
 interface HashCalculatorInterface
 {
     /**
+     * Calculates the hash string
      *
-     * @param type $data
+     * @param string $data
+     * @return string
      */
     public function getHash($data);
 }

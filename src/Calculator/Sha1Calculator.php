@@ -1,4 +1,4 @@
-<?php namespace SimpleHash\HashCalculator;
+<?php namespace SimpleHash\Calculator;
 
 /**
  * MD5 Hash calculator class

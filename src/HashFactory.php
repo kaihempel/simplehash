@@ -1,6 +1,7 @@
 <?php namespace SimpleHash;
 
 use SimpleHash\Container\HashContainer;
+use SimpleHash\Exception\SimpleHashException;
 
 /**
  * Hash factory
@@ -14,9 +15,116 @@ use SimpleHash\Container\HashContainer;
  */
 class HashFactory
 {
-
-    public function getMd5Hash()
+    /**
+     * Magic factory method
+     *
+     * @param string $name
+     * @param array $arguments
+     * @throws SimpleHashException
+     */
+    public function __call($name, $arguments)
     {
-        return new HashContainer;
+        if ($this->isCalledGetter($name) === false) {
+            throw SimpleHashException::make('Unsupported method "' . $name . '" called!');
+        }
+
+        // Intialize variables
+
+        $plainText          = $this->getPlainStringFromArguments($arguments);
+        $calculatorParams   = $this->getCalculatorParamsFromArguments($arguments);
+
+        // Initialize calculator
+
+        $calculatorClass = $this->getCalculatorName($name);
+        if ( ! $this->calculatorExists($calculatorClass)) {
+            throw SimpleHashException::make('No calclator "' . $calculatorClass . '" exists!');
+        }
+
+        $calculator = $this->initializeCalculator($calculatorClass, $calculatorParams);
+
+        // Initialize hash container with hash string
+
+        $container = new HashContainer();
+        $container->setHashString($calculator->getHash($plainText));
+
+        // Return hash container
+
+        return $container;
+    }
+
+    /**
+     * Checks if a getter method was called
+     *
+     * @param string $name
+     * @return string
+     */
+    private function isCalledGetter($name)
+    {
+        return substr($name, 0, 3) == 'get';
+    }
+
+    /**
+     * Builds the calculator class name string
+     *
+     * @param string $name
+     * @return string
+     */
+    private function getCalculatorName($name)
+    {
+        $algorithmName = str_replace(['get', 'Hash'], ['', ''], $name);
+        return '\SimpleHash\Calculator\\' . ucfirst(strtolower($algorithmName)) . 'Calculator';
+    }
+
+    /**
+     * Checks if the given class name exists
+     *
+     * @param string $calculatorClass
+     * @return type
+     */
+    private function calculatorExists($calculatorClass)
+    {
+        return class_exists($calculatorClass, true);
+    }
+
+    /**
+     * Extracts the string for hashing from the given argument array
+     *
+     * @param array $arguments
+     * @return string
+     */
+    private function getPlainStringFromArguments($arguments)
+    {
+        if (empty($arguments) || empty($arguments[0])) {
+            return '';
+        }
+
+        return $arguments[0];
+    }
+
+    /**
+     * Extracts the calculator parameter from given argument array
+     *
+     * @param array $arguments
+     * @return type
+     */
+    private function getCalculatorParamsFromArguments($arguments)
+    {
+        if (empty($arguments) || empty($arguments[1]) || ! is_array($arguments[1])) {
+            return [];
+        }
+
+        return $arguments[1];
+    }
+
+    /**
+     * Initialize calculator object
+     *
+     * @param string    $calculatorClass
+     * @param array     $params
+     * @return \SimpleHash\Calculator\HashCalculatorInterface
+     */
+    private function initializeCalculator($calculatorClass, array $params)
+    {
+        return new $calculatorClass($params);
     }
 }

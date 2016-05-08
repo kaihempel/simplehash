@@ -36,7 +36,7 @@ class HashFactory
         // Initialize calculator
 
         $calculatorClass = $this->getCalculatorName($name);
-        if ( ! $this->calculatorExists($calculatorClass)) {
+        if (! $this->calculatorExists($calculatorClass)) {
             throw SimpleHashException::make('No calclator "' . $calculatorClass . '" exists!');
         }
 

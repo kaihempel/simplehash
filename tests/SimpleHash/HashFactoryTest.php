@@ -29,11 +29,32 @@ class HashFactoryTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\SimpleHash\HashFactory', $hashFactory);
     }
 
+    /**
+     * @expectedException \SimpleHash\Exception\SimpleHashException
+     * @expectedExceptionMessage Unsupported method "test" called!
+     */
+    public function testUnspportedMethod()
+    {
+        $hashFactory = new HashFactory();
+        $hashFactory->test();
+    }
+
+    /**
+     * @expectedException \SimpleHash\Exception\SimpleHashException
+     * @expectedExceptionMessage No calclator "\SimpleHash\Calculator\TestCalculator" exists!
+     */
+    public function testUnspportedCalculator()
+    {
+        $hashFactory = new HashFactory();
+        $hashFactory->getTestHash();
+    }
+
     public function testGetMd5Hash()
     {
         $hashFactory = new HashFactory();
-        $hash = $hashFactory->getMd5Hash();
+        $hash = $hashFactory->getMd5Hash('TEST');
 
         $this->assertInstanceOf('\SimpleHash\Container\HashContainer', $hash);
+        $this->assertEquals('033bd94b1168d7e4f0d644c3c95e35bf', $hash);
     }
 }

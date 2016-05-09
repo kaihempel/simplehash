@@ -26,5 +26,4 @@ interface HashContainerInterface
      * @return HashContainerInterface
      */
     public function setHashString($hashString);
-
 }

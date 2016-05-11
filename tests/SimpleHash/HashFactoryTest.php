@@ -49,6 +49,14 @@ class HashFactoryTest extends PHPUnit_Framework_TestCase
         $hashFactory->getTestHash();
     }
 
+    public function testHasCalculator()
+    {
+        $hashFactory = new HashFactory();
+
+        $this->assertTrue($hashFactory->hasCalculator('Md5'));
+        $this->assertFalse($hashFactory->hasCalculator('Test'));
+    }
+
     public function testGetMd5Hash()
     {
         $hashFactory = new HashFactory();

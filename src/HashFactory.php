@@ -128,4 +128,15 @@ class HashFactory
     {
         return new $calculatorClass($this->calculatorParams);
     }
+
+    /**
+     * CHecks if the calculator class exists
+     *
+     * @param   string      $name
+     * @return  boolean
+     */
+    public function hasCalculator($name)
+    {
+        return $this->calculatorExists($this->getCalculatorName($name));
+    }
 }

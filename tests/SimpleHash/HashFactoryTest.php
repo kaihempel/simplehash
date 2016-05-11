@@ -57,4 +57,16 @@ class HashFactoryTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\SimpleHash\Container\HashContainer', $hash);
         $this->assertEquals('033bd94b1168d7e4f0d644c3c95e35bf', $hash);
     }
+
+    public function testNewFactoryWithParams()
+    {
+        $hashFactory = new HashFactory(
+                                ['test' => 'testData']
+                           );
+
+        $hash = $hashFactory->getMd5Hash('TEST');
+
+        $this->assertInstanceOf('\SimpleHash\Container\HashContainer', $hash);
+        $this->assertEquals('033bd94b1168d7e4f0d644c3c95e35bf', $hash);
+    }
 }

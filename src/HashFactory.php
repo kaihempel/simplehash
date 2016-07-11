@@ -121,7 +121,6 @@ class HashFactory
      * Initialize calculator object
      *
      * @param   string      $calculatorClass
-     * @param   array       $params
      * @return  \SimpleHash\Calculator\HashCalculatorInterface
      */
     private function initializeCalculator($calculatorClass)

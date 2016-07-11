@@ -33,10 +33,10 @@ class HashTest extends PHPUnit_Framework_TestCase
 
     public function testSha256Hash()
     {
-        $hash = Hash::Sha256('TEST_SHA512');
+        $hash = Hash::Sha256('TEST_SHA256');
 
         $this->assertInstanceOf('\SimpleHash\Container\HashContainer', $hash);
-        $this->assertEquals('f02e047678e2ea7138d480834c421d6cf545e027bb3ae79cc91898079f01c000', $hash);
+        $this->assertEquals('310f9660c1a516e2e8412a6d1a5d494fd73d5f253333621110e2798b18d0db65', $hash);
     }
 
     public function testSha512Hash()

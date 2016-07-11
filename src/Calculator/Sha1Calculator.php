@@ -1,7 +1,7 @@
 <?php namespace SimpleHash\Calculator;
 
 /**
- * MD5 Hash calculator class
+ * SHA1 Hash calculator class
  *
  * @package    SimpleHash
  * @author     Kai Hempel <dev@kuweh.de>
@@ -13,7 +13,7 @@
 class Sha1Calculator implements HashCalculatorInterface
 {
     /**
-     * Returns the MD5 hash
+     * Returns the SHA1 hash
      *
      * @param string $data
      * @return string

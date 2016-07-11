@@ -25,9 +25,9 @@ class Sha1CalculatorTest extends PHPUnit_Framework_TestCase
 
     public function testGetHash()
     {
-        $md5 = new Sha1Calculator();
+        $sha1 = new Sha1Calculator();
 
-        $result = $md5->getHash('TEST');
+        $result = $sha1->getHash('TEST');
 
         $this->assertEquals('984816fd329622876e14907634264e6f332e9fb3', $result);
     }

@@ -45,9 +45,9 @@ class HashFactory
             throw SimpleHashException::make('Unsupported method "' . $name . '" called!');
         }
 
-        // Intialize variables
+        // Initialize variables
 
-        $plainText          = $this->getPlainStringFromArguments($arguments);
+        $plainText = $this->getPlainStringFromArguments($arguments);
 
         // Initialize calculator
 

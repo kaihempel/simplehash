@@ -47,6 +47,30 @@ class HashTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('3e5b0a6321cf33475bd0bdf75e92091eb233d48b21956f77a50bc8622ef93fa14e81a692e392bbad43bae3fd69d1700e63a0a64c0fb599cba5ac8f008cd122ed', $hash);
     }
 
+    public function testBcryptHash()
+    {
+        // Without params
+
+        $hash1 = Hash::Bcrypt('TEST_BCRYPT');
+
+        $this->assertInstanceOf('\SimpleHash\Container\HashContainer', $hash1);
+        $this->assertEquals('$2y$10$Af13GgKoL503sCvf42dJ1uRdAbA9eaFajPkCIQ0mvpi.LAYCAILs.', $hash1);
+
+        // With params
+
+        $hash2 = Hash::Bcrypt('TEST_BCRYPT_PARAMS', 10, 'AbCdEfGhJkLmNoPQrStUv');
+
+        $this->assertInstanceOf('\SimpleHash\Container\HashContainer', $hash2);
+        $this->assertEquals('$2y$10$Af13GgKoL503sCvf42dJ1ulszQ9VpJdtcscb0PrmfNZXGIdr4xhre', $hash2);
+
+        // With wrong params; Default values used an hash is the same like "hash1"
+
+        $hash3 = Hash::Bcrypt('TEST_BCRYPT', 110, '$$$XXXXAbCdEfGhJkLmNoPQrStUv$$$$');
+
+        $this->assertInstanceOf('\SimpleHash\Container\HashContainer', $hash3);
+        $this->assertEquals('$2y$10$Af13GgKoL503sCvf42dJ1uRdAbA9eaFajPkCIQ0mvpi.LAYCAILs.', $hash3);
+    }
+
     /**
      * @expectedException \SimpleHash\Exception\SimpleHashException
      * @expectedExceptionMessage Algorithm "Test" is not implemented yet!

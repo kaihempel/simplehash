@@ -83,7 +83,7 @@ class BcryptCalculator implements HashCalculatorInterface
     private function setCostFromParams(array $params)
     {
         $cost = (int)$this->getMatchingData($params, '/^[0-9]{1,2}$/');
-        $this->cost = (string)(! empty($cost)) ? $cost : self::DEFAULT_COST;
+        $this->cost = (! empty($cost)) ? (string)$cost : self::DEFAULT_COST;
     }
 
     /**

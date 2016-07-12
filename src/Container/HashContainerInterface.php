@@ -1,7 +1,7 @@
 <?php namespace SimpleHash\Container;
 
 /**
- * Hash container class
+ * Hash container interface
  *
  * @package    SimpleHash
  * @author     Kai Hempel <dev@kuweh.de>
